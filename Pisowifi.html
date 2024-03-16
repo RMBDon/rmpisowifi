@@ -2,40 +2,77 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="expires" content="-1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Widget Page</title>
-    <style>
-        html, body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
-        #embed-voucher {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 999;
-        }
-    </style>
+    <title>RM Pisowifi - Login</title>
+    <link rel="stylesheet" href="assets/css/style.css?v=5.1">
+    <script src="assets/js/config.js?v=5.1"></script>
+    <script src="assets/core/core.js?v=5.1"></script>
+    <script src="assets/core/pako.min.js?v=5.1"></script>
 </head>
 <body>
-    <embed id="embed-voucher" type="text/html" src="https://payments.wifree.network/widget/voucher/juanfi/index.html?portal_key=65d79326d79a7">
+    
+    <div id="toast"></div>
+    $(if chap-id)
+    <form name="sendin" action="$(link-login-only)" method="post" style="display:none">
+        <input type="hidden" name="username" />
+        <input type="hidden" name="password" />
+        <input type="hidden" name="dst" value="$(link-status)" />
+        <input type="hidden" name="popup" value="true" />
+    </form>
+    <script src="assets/core/md5.js"></script>
     <script>
-        window.addEventListener('message', ({ data }) => {
-            if (data.hasOwnProperty("toggleBol")) {
-                if (data['toggleBol']) {
-                    document.getElementById("embed-voucher").style.height = "100%";
-                    document.getElementById("embed-voucher").style.width = "100%";
-                } else {
-                    document.getElementById("embed-voucher").style.height = "16%";
-                    document.getElementById("embed-voucher").style.width = "30%";
-                }
-            }
-        });
+        var Mac = '$(mac)';
+        var IpAddress = '$(ip)';
+        var LinkLogin = '$(link-login-only)';
+        var LinkStatus = '$(link-status)';
+        var LinkLogout = '$(link-logout)';
+        var InterfaceName = '$(interface-name)';
+        var ServerAddress = '$(server-address)';
+        var LoginError = '';
+        function doLogin() {
+            document.sendin.username.value = document.login.username.value;
+            document.sendin.password.value = hexMD5('$(chap-id)' + document.login.password.value + '$(chap-challenge)');
+            document.sendin.submit();
+            return false;
+        }
     </script>
+    $(endif)
+    $(if error)
+    <script>
+        LoginError = "$(error)";
+    </script>
+    $(endif)   
+    <div id="root"></div>
+
+    <script src="assets/core/main.js?v=5.1"></script>
+    <script src="assets/core/navbar.js?v=5.1"></script>
+    <script src="assets/core/header.js?v=5.1"></script>
+    <script src="assets/core/login.js?v=5.1"></script>
+    <script src="assets/core/footer.js?v=5.1"></script>
+
+
+<embed id="embed-voucher" type="text/html" src="https://payments.wifree.network/widget/voucher/juanfi/index.html?portal_key=65d79326d79a7" style="position: fixed;
+bottom: -23px;
+right: -19px;
+width: 30%;
+height: 16%;
+z-index: 999;">
+<script>
+    window.addEventListener('message', ({ data }) => {
+        if (data.hasOwnProperty("toggleBol")) {
+            if (data['toggleBol']) {
+                document.getElementById("embed-voucher").style.height = "16%";
+                document.getElementById("embed-voucher").style.width = "30%";
+            } else {
+                document.getElementById("embed-voucher").style.height = "100%";
+                document.getElementById("embed-voucher").style.width = "100%";
+            }
+        }
+    });
+</script>
+
+
 </body>
 </html>
