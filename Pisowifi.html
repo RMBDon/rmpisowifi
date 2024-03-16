@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    
+
+
+<embed id="embed-voucher" type="text/html" src="https://payments.wifree.network/widget/voucher/juanfi/index.html?portal_key=[YOUR-PORTAL-KEY]" style="position: fixed;
+bottom: 100px;
+right: 50px;
+width: 10000%;
+height: 100%;
+z-index: 999;">
+<script>
+    window.addEventListener('message', ({ data }) => {
+        if (data.hasOwnProperty("toggleBol")) {
+            if (data['toggleBol']) {
+                document.getElementById("embed-voucher").style.height = "100%";
+                document.getElementById("embed-voucher").style.width = "300%";
+            } else {
+                document.getElementById("embed-voucher").style.height = "1000%";
+                document.getElementById("embed-voucher").style.width = "1000%";
+            }
+        }
+    });
+</script>
+
+
+</body>
+</html>
