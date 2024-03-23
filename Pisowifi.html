@@ -1,28 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirect Page</title>
+</head>
 <body>
+    <form id="redirectForm">
+        <label for="mobile">Enter Mobile Number (11 digits):</label><br>
+        <input type="tel" id="mobile" name="mobile" pattern="[0-9]{11}" required><br>
+        <label for="rate">Select Rate:</label><br>
+        <select id="rate" name="rate" required>
+            <!-- Options will be populated dynamically using JavaScript -->
+        </select><br><br>
+        <button type="submit">Redirect</button>
+    </form>
 
-<embed id="embed-voucher" type="text/html" src="https://payments.wifree.network/widget/voucher/juanfi/index.html?portal_key=65d79326d79a7" style="position: fixed;
-bottom: -23px;
-right: -19px;
-width: 30%;
-height: 16%;
-z-index: 999;">
-<script>
-    window.addEventListener('message', ({ data }) => {
-        if (data.hasOwnProperty("toggleBol")) {
-            if (data['toggleBol']) {
-                document.getElementById("embed-voucher").style.height = "16%";
-                document.getElementById("embed-voucher").style.width = "30%";
-            } else {
-                document.getElementById("embed-voucher").style.height = "100%";
-                document.getElementById("embed-voucher").style.width = "100%";
-            }
+    <script>
+        // Function to fetch CSV file and populate dropdown options
+        function populateDropdown() {
+            fetch('rates.csv')
+                .then(response => response.text())
+                .then(data => {
+                    const options = data.split('\n');
+                    const selectElement = document.getElementById('rate');
+                    options.forEach(option => {
+                        if (option.trim() !== '') {
+                            const optionElement = document.createElement('option');
+                            optionElement.textContent = option.trim();
+                            selectElement.appendChild(optionElement);
+                        }
+                    });
+                });
         }
-    });
-</script>
 
+        // Call function to populate dropdown when the page loads
+        populateDropdown();
 
+        // Add event listener to form submission
+        document.getElementById("redirectForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var mobileNumber = document.getElementById("mobile").value;
+            var rateSelect = document.getElementById("rate");
+            var rate = rateSelect.value === "others" ? "" : rateSelect.value;
+            var redirectUrl = "https://payments.wifree.network/xendit/production/purchase_voucher.php?portal_key=65d79326d79a7&mobile=" + mobileNumber + "&amount=" + rate;
+            window.location.href = redirectUrl;
+        });
+
+        // Add event listener to rate dropdown change to handle "others" option
+        document.getElementById("rate").addEventListener("change", function(event) {
+            var rateInput = document.getElementById("rateInput");
+            if (event.target.value === "others") {
+                rateInput.style.display = "block";
+                rateInput.focus();
+            } else {
+                rateInput.style.display = "none";
+            }
+        });
+    </script>
 </body>
 </html>
