@@ -40,9 +40,11 @@
                     selectElement.addEventListener('change', function() {
                         if (this.value === 'Others') {
                             rateInput.style.display = 'block';
+                            rateInput.value = ''; // Clear input value when "Others" is selected
                             rateInput.focus();
                         } else {
                             rateInput.style.display = 'none';
+                            rateInput.value = this.value; // Set input value to selected rate
                         }
                     });
                 });
