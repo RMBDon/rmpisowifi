@@ -31,7 +31,7 @@
                         if (index !== 0) { // Skip the header row
                             const [rate, description] = row.split(',');
                             const optionElement = document.createElement('option');
-                            optionElement.textContent = `${rate.trim()} - ${description.trim()}`;
+                            optionElement.textContent = `${description.trim()}`;
                             optionElement.value = rate.trim();
                             selectElement.appendChild(optionElement);
                         }
