@@ -31,7 +31,7 @@
                         if (index !== 0) { // Skip the header row
                             const [rate, description] = row.split(',');
                             const optionElement = document.createElement('option');
-                            optionElement.textContent = `${description.trim()}`;
+                            optionElement.textContent = `${rate.trim()} - ${description.trim()}`;
                             optionElement.value = rate.trim();
                             selectElement.appendChild(optionElement);
                         }
@@ -44,7 +44,8 @@
                             rateInput.focus();
                         } else {
                             rateInput.style.display = 'none';
-                            rateInput.value = this.value; // Set input value to selected rate
+                            const selectedOption = this.options[this.selectedIndex];
+                            rateInput.value = selectedOption.value; // Set input value to selected rate
                         }
                     });
                 });
