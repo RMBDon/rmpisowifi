@@ -13,6 +13,7 @@
         <select id="rate" name="rate" required>
             <!-- Options will be populated dynamically using JavaScript -->
         </select><br><br>
+        <input type="number" id="rateInput" name="rateInput" style="display: none;"><br><br>
         <button type="submit">Redirect</button>
     </form>
 
@@ -22,13 +23,24 @@
             fetch('rates.csv')
                 .then(response => response.text())
                 .then(data => {
-                    const options = data.split('\n');
+                    const rows = data.trim().split('\n');
                     const selectElement = document.getElementById('rate');
-                    options.forEach(option => {
-                        if (option.trim() !== '') {
-                            const optionElement = document.createElement('option');
-                            optionElement.textContent = option.trim();
-                            selectElement.appendChild(optionElement);
+                    const rateInput = document.getElementById('rateInput');
+                    
+                    rows.forEach(row => {
+                        const [rate, description] = row.split(',');
+                        const optionElement = document.createElement('option');
+                        optionElement.textContent = description.trim();
+                        optionElement.value = rate.trim();
+                        selectElement.appendChild(optionElement);
+                    });
+
+                    selectElement.addEventListener('change', function() {
+                        if (this.value === 'Others') {
+                            rateInput.style.display = 'block';
+                            rateInput.focus();
+                        } else {
+                            rateInput.style.display = 'none';
                         }
                     });
                 });
@@ -42,20 +54,9 @@
             event.preventDefault();
             var mobileNumber = document.getElementById("mobile").value;
             var rateSelect = document.getElementById("rate");
-            var rate = rateSelect.value === "others" ? "" : rateSelect.value;
+            var rate = rateSelect.value === "Others" ? document.getElementById("rateInput").value : rateSelect.value;
             var redirectUrl = "https://payments.wifree.network/xendit/production/purchase_voucher.php?portal_key=65d79326d79a7&mobile=" + mobileNumber + "&amount=" + rate;
             window.location.href = redirectUrl;
-        });
-
-        // Add event listener to rate dropdown change to handle "others" option
-        document.getElementById("rate").addEventListener("change", function(event) {
-            var rateInput = document.getElementById("rateInput");
-            if (event.target.value === "others") {
-                rateInput.style.display = "block";
-                rateInput.focus();
-            } else {
-                rateInput.style.display = "none";
-            }
         });
     </script>
 </body>
