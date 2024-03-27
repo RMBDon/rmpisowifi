@@ -1,9 +1,9 @@
 ﻿Rate,Description
 1, Peso for 20 minutes
 5, Pesos for 2 hours
-10, Pesos for 5 hours
-15, Pesos for 11 hours
-20, Pesos for 15 hours 
+10, Pesos for 4 hours
+15, Pesos for 7 hours
+20, Pesos for 10 hours 
 25, Pesos for 1 day
 420, Pesos for 1 month
 Others,Manually input any integer
