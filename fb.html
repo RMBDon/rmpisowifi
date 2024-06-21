@@ -11,6 +11,10 @@
             text-align: center;
             background-color: #f9f9f9;
             border-radius: 5px;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
         }
         .widget a {
             text-decoration: none;
@@ -25,7 +29,7 @@
 <body>
     <div class="widget">
         <p>Need help? Chat with us on Messenger!</p>
-        <a href="m.me/247277685133441" target="_blank">Chat Now</a>
+        <a href="#" onclick="toggleChat()">Chat Now</a>
     </div>
 
     <!-- Messenger Chat Plugin Code -->
@@ -36,7 +40,19 @@
          page_id="247277685133441"
          theme_color="#0078ff"
          logged_in_greeting="Hi! How can we help you?"
-         logged_out_greeting="Hi! How can we help you?">
+         logged_out_greeting="Hi! How can we help you?"
+         minimized="true">
     </div>
+
+    <script>
+        function toggleChat() {
+            var chatbox = document.querySelector('.fb-customerchat');
+            if (chatbox.getAttribute('minimized') === 'true') {
+                chatbox.setAttribute('minimized', 'false');
+            } else {
+                chatbox.setAttribute('minimized', 'true');
+            }
+        }
+    </script>
 </body>
 </html>
