@@ -2,64 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Messenger Widget</title>
-    <style>
-        .widget {
-            border: 1px solid #ccc;
-            padding: 10px;
-            width: 200px;
-            text-align: center;
-            background-color: #f9f9f9;
-            border-radius: 5px;
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-        }
-        .widget a {
-            text-decoration: none;
-            color: #fff;
-            background-color: #0078ff;
-            padding: 10px 15px;
-            border-radius: 5px;
-            display: inline-block;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group Chat</title>
 </head>
 <body>
-    <div class="widget">
-        <p>Need help? Chat with us on Messenger!</p>
-        <a href="#" onclick="toggleChat()">Chat Now</a>
-    </div>
-
-    <!-- Messenger Chat Plugin Code -->
-    <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v10.0" nonce="bbQD6MdKpRhtKsOx"></script>
-    <div class="fb-customerchat"
-         attribution="setup_tool"
-         page_id="247277685133441"
-         theme_color="#0078ff"
-         logged_in_greeting="Hi! How can we help you?"
-         logged_out_greeting="Hi! How can we help you?"
-         minimized="true">
-    </div>
-
-    <script>
-        function toggleChat() {
-            console.log("Chat button clicked");
-            var chatbox = document.querySelector('.fb-customerchat');
-            if (chatbox) {
-                if (chatbox.getAttribute('minimized') === 'true') {
-                    chatbox.setAttribute('minimized', 'false');
-                    console.log("Chat box opened");
-                } else {
-                    chatbox.setAttribute('minimized', 'true');
-                    console.log("Chat box minimized");
-                }
-            } else {
-                console.log("Chat box not found");
-            }
-        }
-    </script>
+    <h1>Welcome to the Group Chat</h1>
+    <iframe src="https://www.messenger.com/t/247277685133441" width="100%" height="600px"></iframe>
 </body>
 </html>
