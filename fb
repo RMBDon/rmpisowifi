@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Messenger Widget</title>
+    <style>
+        .widget {
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 200px;
+            text-align: center;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+        .widget a {
+            text-decoration: none;
+            color: #fff;
+            background-color: #0078ff;
+            padding: 10px 15px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="widget">
+        <p>Need help? Chat with us on Messenger!</p>
+        <a href="m.me/247277685133441" target="_blank">Chat Now</a>
+    </div>
+</body>
+</html>
