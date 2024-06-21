@@ -46,11 +46,18 @@
 
     <script>
         function toggleChat() {
+            console.log("Chat button clicked");
             var chatbox = document.querySelector('.fb-customerchat');
-            if (chatbox.getAttribute('minimized') === 'true') {
-                chatbox.setAttribute('minimized', 'false');
+            if (chatbox) {
+                if (chatbox.getAttribute('minimized') === 'true') {
+                    chatbox.setAttribute('minimized', 'false');
+                    console.log("Chat box opened");
+                } else {
+                    chatbox.setAttribute('minimized', 'true');
+                    console.log("Chat box minimized");
+                }
             } else {
-                chatbox.setAttribute('minimized', 'true');
+                console.log("Chat box not found");
             }
         }
     </script>
