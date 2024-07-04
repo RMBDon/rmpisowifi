@@ -1,31 +1,32 @@
 // USE NOTEPAD++ FOR BETTER EDITOR https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v8.6.4/npp.8.6.4.Installer.x64.exe
 // Portal settings ////////////////////////////////////////////////////////
 var portal_key = '79f6ad7a-8ec9-4549-b94d-698f6fb1eee6'; // portal key that you received upon registration: https://lazydev.unaux.com/register/
-var hotspot_name = '';
+var hotspot_name = ' ';
 var login_option = 0; // 0 for voucher only, 1 for voucher with password (for mikhmon users)
 var currency_symbol = '₱';
 var mac_as_voucher = true;
-var hide_voucher_details = true;
+var hide_voucher_details = false;
 var noPausePrefix = ['TR', 'PR', 'MR', 'CR', 'T-', 'RD']; // No pause voucher that started with this prefix
 var noExtendPrefix = ['TR', 'PR', 'MR', 'CR', 'T-', 'RD', 'GCASH', 'PAYMAYA', 'GRABPAY', 'SHOPEEPAY', 'RM', 'RA']; // No extend voucher that started with this prefix
-var admin_username = 'admin'; // dapat naka lock yung mac address sa device na gamit mo
+var portal_adminpage_username = '';
+var portal_adminpage_password = '';
 
 // Misc settings //////////////////////////////////////////////////////////
-var footer_text = '<br><br><i>Bookmark this link for easier portal access</i></p><a href="http://10.0.0.1/"><b>http://10.0.0.1/</b></a></p>••••••••••••••••••••••••••<br><a href="https://rmpisowifi.tawk.help/"><b>Check FAQs here</b></a><br><br>All rights reserved ' + new Date().getFullYear();
-var announcement = false;
-var announcement_duration = 4; //10s
+var footer_text = '<br><br><i>Bookmark this link for easier portal access</i></p><a href="http://rmwifi.com/"><b>rmwifi.com</b></a></p>••••••••••••••••••••••••••<br><a href="https://rmpisowifi.tawk.help/"><b>Check FAQs here</b></a><br><br>All rights reserved ' + new Date().getFullYear();
+var announcement = true;
+var announcement_duration = 60; //10s
 var announcement_text = 'ADDED FEATURES<br>• Loyalty points <br><a style="color:#fff" href="/loyalty.html" title="my Points">Sign up here</a><br>• Cashless Payment<br>• Movie search function<br>• Watch anime<br><br>';
 
 // Portal buttons settings ////////////////////////////////////////////////
 var hide_insertcoin_button = false;
-var hide_iptv_button = false;
 var hide_movies_button = false;
+var hide_iptv_button = false;
 var hide_eload_button = false;
 var hide_vault_button = false;
 var hide_charging_button = true; // not yet implemented
 var hide_loyal_button = false;
 var hide_pause_button = false;
-var hide_member_login = true;
+var hide_member_login = false;
 var pause_limit = 0; // pause available per voucher, 0 = unli pause
 
 // Loyal points system settings ///////////////////////////////////////////
@@ -104,3 +105,4 @@ var multi_vendo_ip = [
    // }
 // palaging walang "," kuwit or comma sa dulong bracket "}" ang huling vendo setting
 ];
+
