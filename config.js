@@ -8,8 +8,8 @@ var mac_as_voucher = true;
 var hide_voucher_details = false;
 var noPausePrefix = ['TR', 'PR', 'MR', 'CR', 'T-', 'RD']; // No pause voucher that started with this prefix
 var noExtendPrefix = ['TR', 'PR', 'MR', 'CR', 'T-', 'RD', 'GCASH', 'PAYMAYA', 'GRABPAY', 'SHOPEEPAY', 'RM', 'RA']; // No extend voucher that started with this prefix
-var portal_adminpage_username = '';
-var portal_adminpage_password = '';
+var portal_adminpage_username = '1';
+var portal_adminpage_password = '1';
 
 // Misc settings //////////////////////////////////////////////////////////
 var footer_text = '<br><br><i>Bookmark this link for easier portal access</i></p><a href="http://rmwifi.com/"><b>rmwifi.com</b></a></p>••••••••••••••••••••••••••<br><a href="https://rmpisowifi.tawk.help/"><b>Check FAQs here</b></a><br><br>All rights reserved ' + new Date().getFullYear();
